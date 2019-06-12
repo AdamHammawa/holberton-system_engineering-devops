@@ -6,4 +6,5 @@
 <p>Fifth script will list all the files (inluding hidden ones) in a long format</p>
 <p>Sixth script will just simply create a directory</p>
 <p>Seventh script will move a file from one folder to another</p>	
-<p>Eight script will delete a file</p>
+<p>Eighth script will delete a file</p>
+<p>Nineth script will delete a folder</p>
