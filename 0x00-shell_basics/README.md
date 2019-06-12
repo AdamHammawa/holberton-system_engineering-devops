@@ -4,3 +4,4 @@
 <p>Third script takes you to the users Home directory</p>
 <p>Fourth script will list all the files in a long format</p>
 <p>Fifth script will list all the files (inluding hidden ones) in a long format</p>
+
