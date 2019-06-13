@@ -1,1 +1,1 @@
-<h1>Shell Perissions</h1>
+<h1>Shell Permissions</h1>
