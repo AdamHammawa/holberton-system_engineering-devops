@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $line; ls -amp; echo $line;\
+echo -en "\n" ; ls -amp ; echo -en "\n"\
