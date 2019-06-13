@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo chown -h betty _hello ; sudo chgrp -h holberton _hello\
+chown -h betty:holberton _hello\
