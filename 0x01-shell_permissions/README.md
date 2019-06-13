@@ -1,1 +1,1 @@
-<h1>Shell Permissions</h1>
+<h1>Shell COOL Permissions</h1>
