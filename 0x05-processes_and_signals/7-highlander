@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Loop that prints something 
+
+trap "echo 'I am invicible!!!'" SIGTERM
+
+while true ; do
+	echo "To infinity and beyond"
+	sleep 2
+done
