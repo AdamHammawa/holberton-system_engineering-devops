@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# script prints all the inet addresses of ifconfig
+ifconfig | grep "inet addr:" | cut -c 21-30
