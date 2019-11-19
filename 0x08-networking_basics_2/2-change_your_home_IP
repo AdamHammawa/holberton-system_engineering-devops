@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Changing ip addresses to where it points to
+cp /etc/hosts ~/hosts.new
+IP_OLD="127.0.0.1"
+IP_NEW="127.0.0.8"
+sed -i "s/$IP_OLD/$IP_NEW/" ~/hosts.new
+echo "8.8.8.8 facebook.com" >> ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
