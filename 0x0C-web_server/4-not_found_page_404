@@ -11,4 +11,9 @@ echo "Holberton School" | sudo tee /var/www/html/index.html
 var="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
 # with sed we add the line in the file default
 sudo sed -i "s/server_name _;/$var/" /etc/nginx/sites-available/default
+#### Creating 404.html
+sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+#### Reditecting 404
+var2="server_name _;\n\terror_page 404 \/404.html;"
+sudo sed -i "s/server_name _;/$var2/" /etc/nginx/sites-available/default
 sudo service nginx restart
