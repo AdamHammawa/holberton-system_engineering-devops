@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
-# code that automatically installs "engine x" and inserts a string in the site
+# https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-to-use-custom-error-pages-on-ubuntu-14-04
+# configure a new nginx web server
+# install the Nginx
 sudo apt-get -y update
-sudo apt-get -y upgrade
 sudo apt-get -y install nginx
+# enable pass of traffic in the port 80
 sudo ufw allow 'Nginx HTTP'
-sudo rm /var/www/html/index.nginx-debian.html
-echo "Holberton School" | sudo tee /var/www/html/index.html
-#### adding a line of code to rediret when user types mikesosa.tech/redirect_me
-# Here we create the text to append.
+# redirect
 var="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
-# with sed we add the line in the file default
-sudo sed -i "s/server_name _;/$var/" /etc/nginx/sites-available/default
-#### Creating 404.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
-##sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-#### Reditecting 404
-var2="server_name _;\n\terror_page 404 \/404.html;"
-sudo sed -i "s/server_name _;/$var2/" /etc/nginx/sites-available/default
-sudo service nginx start
+cd /etc/nginx/sites-available/
+sudo sed -i "s/server_name _;/$var/" default
+cd -
+# adding message to 404 not found
+echo -e "Ceci n'est pas une page\n" | sudo tee /var/www/html/404.html
+# adding a new line inside /etc/nginx/sites-available/default
+var404="server_name _;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+cd /etc/nginx/sites-available/
+sudo sed -i "s/server_name _;/$var404/" default
+cd -
+# restart Nginx service for get changes
+sudo service nginx restart
