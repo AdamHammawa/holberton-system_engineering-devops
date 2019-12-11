@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
-new_string="\\\trewrite ^/redirect_me https://www.youtube.com/ permanent;"
-sudo sed -i "42i $new_string" /etc/nginx/sites-available/default
-n_str="\\\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}\n"
-sudo sed -i "44i $n_str" /etc/nginx/sites-available/default
-sudo service nginx start
+# redirects to 404
+sudo ufw allow 'Nginx HTTP'
+sudo rm /var/www/html/index.nginx-debian.html
+echo "Holberton School" | sudo tee /var/www/html/index.html
+#### adding a line of code to rediret when user types mikesosa.tech/redirect_me
+# Here we create the text to append.
+var="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+# with sed we add the line in the file default
+sudo sed -i "s/server_name _;/$var/" /etc/nginx/sites-available/default
+#### Creating 404.html
+sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+#### Reditecting 404
+var2="server_name _;\n\terror_page 404 \/404.html;"
+sudo sed -i "s/server_name _;/$var2/" /etc/nginx/sites-available/default
