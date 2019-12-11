@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# code that automatically installs "engine x" and inserts a string in the site
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html 
+#### adding a line of code to rediret when user types mikesosa.tech/redirect_me
+# Here we create the text to append.
+var="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+# with sed we add the line in the file default
+sudo sed -i "s/server_name _;/$var/" /etc/nginx/sites-available/default
+sudo service nginx restart
