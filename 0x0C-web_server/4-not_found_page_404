@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# redirects to 404
+# code that automatically installs "engine x" and inserts a string in the site
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 sudo rm /var/www/html/index.nginx-debian.html
 echo "Holberton School" | sudo tee /var/www/html/index.html
@@ -9,7 +12,9 @@ var="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v
 # with sed we add the line in the file default
 sudo sed -i "s/server_name _;/$var/" /etc/nginx/sites-available/default
 #### Creating 404.html
-sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+##sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 #### Reditecting 404
 var2="server_name _;\n\terror_page 404 \/404.html;"
 sudo sed -i "s/server_name _;/$var2/" /etc/nginx/sites-available/default
+sudo service nginx start
