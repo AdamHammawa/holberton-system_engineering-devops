@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# code that automatically installs NGINX and HAProxy and sets an http response header
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install haproxy
+# Enabling the dedicated PPA: not needed in this case
+#sudo apt-get -y install software-properties-common
+#sudo add-apt-repository -y ppa:vbernat/haproxy-1.8
+# Installing haproxy load balancer, no specific version
+#sudo apt-get -y update
+#sudo apt-get -y install haproxy=1.8.\*
+varFrontEnd="\nfrontend myfrontend\n\tbind *:80\n\tmode http\n\tdefault_backend web-backend\n"
+sudo echo -e $varFrontEnd | sudo tee -a /etc/haproxy/haproxy.cfg
+varBackEnd="backend web-backend\n\tbalance roundrobin\n\tserver web1 34.74.238.86:80 check\n\tserver web2 35.196.226.115:80 check"
+sudo echo -e $varBackEnd | sudo tee -a /etc/haproxy/haproxy.cfg
+# Restarting service
+sudo systemctl restart haproxy
