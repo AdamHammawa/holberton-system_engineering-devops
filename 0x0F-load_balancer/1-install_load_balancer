@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
-# Install and configure HAproxy on your lb-01 server
+# code that automatically installs NGINX and HAProxy and sets an http response header
 sudo apt-get -y update
 sudo apt-get -y install haproxy
 sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
-sudo echo -e "frontend localnodes\n\tbind *:80\n\tmode http\n\tdefault_backend nodes\n" | sudo tee -a /etc/haproxy/haproxy.cfg
-sudo echo -e "backend nodes\n\tmode http\n\tbalance roundrobin\n\toption forwardfor\n\tserver 369-web-01 35.196.154.244:80 check\n\tserver 369-web-02 35.227.97.207:80 check\n" | sudo tee -a /etc/haproxy/haproxy.cfg
-sudo service haproxy start
+# Enabling the dedicated PPA: not needed in this case
+#sudo apt-get -y install software-properties-common
+#sudo add-apt-repository -y ppa:vbernat/haproxy-1.8
+# Installing haproxy load balancer, no specific version
+#sudo apt-get -y update
+#sudo apt-get -y install haproxy=1.8.\*
+varFrontEnd="\nfrontend myfrontend\n\tbind *:80\n\tmode http\n\tdefault_backend web-backend\n"
+sudo echo -e $varFrontEnd | sudo tee -a /etc/haproxy/haproxy.cfg
+varBackEnd="backend web-backend\n\tbalance roundrobin\n\tserver 833-web-01 34.74.238.86:80 check\n\tserver 833-web-02 35.196.226.115:80 check"
+sudo echo -e $varBackEnd | sudo tee -a /etc/haproxy/haproxy.cfg
+# Restarting service
+sudo systemctl restart haproxy
