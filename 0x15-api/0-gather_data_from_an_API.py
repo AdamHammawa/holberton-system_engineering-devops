@@ -24,4 +24,4 @@ if __name__ == "__main__":
     print("Eployee {} is done with tasks({}/{}):"
           .format(employee_name, len(todos_Completed), len(todos_List)))
     for task in todos_Completed:
-        print("\t {}".format(task))
+        print("\t{}".format(task))
