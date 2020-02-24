@@ -20,13 +20,13 @@ What was the root cause?
 # Timeline (format bullet point, format: time - keep it short, 1 or 2 sentences) must contain:
 
 When was the issue detected?  
-`3:00:01pm Time zone in Colombia (GMT-5)
+`3:00:01pm Time zone in Colombia (GMT-5)`
 
 How was the issue detected (monitoring alert, an engineer noticed something, a customer complained…)?  
 `Monitoring software alerted us immediately`
 
 Actions taken (what parts of the system were investigated, what were the assumption on the root cause of the issue)?  
-`Curl, top, w, history, strace.
+`Curl, top, w, history, strace.`
 
 Misleading investigation/debugging paths that were taken?  
 `Looked into wp-config and wp-local files instead of the settings`
