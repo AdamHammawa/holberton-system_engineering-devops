@@ -1,4 +1,4 @@
-# ATTENTION! THE SITE IS DOWN AND WE NEED OUR SOLE AND ONLY BRILLIANT ENGINEER TO FIX THIS
+# ATTENTION! THE SITE IS DOWN AND WE NEED SOMEONE LIKE ME TO SOLVE THE ISSUE
 <img src="https://media1.tenor.com/images/85caab51be730a4e1290cd99d7d6e085/tenor.gif">
 
 
@@ -20,19 +20,19 @@ What was the root cause?
 # Timeline (format bullet point, format: time - keep it short, 1 or 2 sentences) must contain:
 
 When was the issue detected?  
-`3:00:01pm -PST`
+`3:00:01pm Time zone in Colombia (GMT-5)
 
 How was the issue detected (monitoring alert, an engineer noticed something, a customer complained…)?  
 `Monitoring software alerted us immediately`
 
 Actions taken (what parts of the system were investigated, what were the assumption on the root cause of the issue)?  
-`Curl, top, w, history, strace. Assumed Kevin messed things up.`
+`Curl, top, w, history, strace.
 
 Misleading investigation/debugging paths that were taken?  
 `Looked into wp-config and wp-local files instead of the settings`
 
 Which team/individuals was the incident escalated to?   
-`The regional manager, Micheal Scott, and the assistant TO the regional manager, diapers Schrute`
+`No bosses, no manages no nothing`
 
 How the incident was resolved?   
 `Fixed the typo. Reboot the server`
@@ -57,7 +57,7 @@ Explain in detail how the issue was fixed?
 # Corrective and preventative measures must contain:
 
 What are the things that can be improved/fixed (broadly speaking)?  
-`Fire Kevin or use code review`
+`Fire Paulo Morillo or use code review`
 
 A list of tasks to address the issue (be very specific, like a TODO, example: patch Nginx server, add monitoring on server memory…)?  
 `See above`
