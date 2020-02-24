@@ -5,7 +5,7 @@
 # Issue Summary (that is often what executives will read) must contain:
 
 Duration of the outage with start and end times (including timezone)?  
-`20 seconds at 3:00:00pm -PST`
+`20 seconds at 3:00:00pm Time zone in Colombia (GMT-5)`
     
 What was the impact (what service was down/slow? What were user experiencing? How many % of the users were affected?)?   
 `100% of our 0 users lost the ability to connect to our site. Always a error 500`
